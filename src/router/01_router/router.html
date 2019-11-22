@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+    <ul>
+        <!-- href里填的是hash地址为了不改变域名 -->
+        <li><a href="#/index">首页</a></li>
+        <li><a href="#/list">列表页</a></li>
+    </ul>
+
+    <div id="routerView"></div>
+</body>
+</html>
+<script>
+    //定义路由配置
+    let router ={
+        // 路由名称  视图界面
+        "#/index":"./index.html",
+        "#/list":"./list.html"
+    }
+
+    //检测hash地址的改变(事件监听)
+    window.addEventListener('hashchange',()=>{
+        console.log(location.hash) //获取每一个哈希地址
+
+        let url = router[location.hash]
+
+        $('#routerView').load(url) //选中标签并加载对应路径
+    })
+
+</script>
